@@ -10,6 +10,5 @@ public class Main01 {
 //        TEST:
 //        String localVariable;
 //        System.out.println(localVariable);  //not possible, must be initialized
-
     }
 }
