@@ -52,7 +52,7 @@ public class Calculator {
 
     public void clearOperations(){
         tab = new String[0];
-//        Arrays.fill(tab,"");  //another solution - according to literal expression of the task
+//        Arrays.fill(tab,"");  //another solution - according to literal expression of the task ("method should erase all saved operations", but there were no information about deleting all elements. Solution with new String[0] seems however better)
     }
 
 }

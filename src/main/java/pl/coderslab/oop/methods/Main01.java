@@ -20,6 +20,5 @@ public class Main01 {
         String carData = car.toString();
         System.out.println("result of toString: " + carData);
 
-
     }
 }
