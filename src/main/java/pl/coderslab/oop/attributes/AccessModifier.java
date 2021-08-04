@@ -5,4 +5,6 @@ public class AccessModifier {
     private String  privateAttribute;
     protected String protectedAttribute;
 
+    public String[] tab = new String[] {"2"};
+
 }
