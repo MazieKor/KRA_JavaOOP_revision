@@ -18,8 +18,8 @@ public class Car {
     public String getBrand(){
         return brand;
     }
-    public String getModel(){
-        return this.model;
+    public String getModel(Car this){
+        return model;
     }
     public double getPrice(){
         return price;

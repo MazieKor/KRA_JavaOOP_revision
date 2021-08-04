@@ -20,5 +20,8 @@ public class Main01 {
         String carData = car.toString();
         System.out.println("result of toString: " + carData);
 
+        String carModel = car.getModel();
+        System.out.println("Car model: " + carModel);
+
     }
 }
