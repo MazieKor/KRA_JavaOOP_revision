@@ -19,7 +19,7 @@ public class TestCalculator {
         System.out.print("Test po 6 operacjach: ");
         calc1.printOperations();
 
-        calc1.divided(4,0);
+        double divideResult = calc1.divided(4,0);
         System.out.print("Test po dzieleniu przez 0: ");
         calc1.printOperations();
 
@@ -48,5 +48,6 @@ public class TestCalculator {
         calc1.printOperations();
 
         System.out.println("Test zapisane zmienne z początku zadania: " + (sum1 + multiply1));
+        System.out.println("Test dzielenia przez 0 w double: " + divideResult);
     }
 }

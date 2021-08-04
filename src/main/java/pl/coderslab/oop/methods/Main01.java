@@ -15,7 +15,7 @@ public class Main01 {
         Car car = new Car();
         car.setBrand("BMW");
         car.setModel("Z3");
-        System.out.println(car); //without setting default value = 0.0 NEW: automatycznie metodę toString wywołuje
+        System.out.println(car); //without setting default value = 0.0
         car.setPrice(1999.98);
         String carData = car.toString();
         System.out.println("result of toString: " + carData);

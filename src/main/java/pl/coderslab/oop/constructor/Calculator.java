@@ -8,7 +8,7 @@ public class Calculator {
     private String[] tab;
 
     public Calculator(){
-        tab = new String[0];  //NEW jeśli zadeklarowałbym zmienną w konstruktorze (String[] tab = ) to nie byłaby ona widoczna gdzie indzie (w innych metodach tej klasy)
+        tab = new String[0];
     }
 
     public int add(int num1, int num2){
@@ -34,7 +34,7 @@ public class Calculator {
     public double divided(double num1, double num2){
         if(num2 == 0){
             System.out.println("You can't divid by zero. Choose another number");
-            return num1 / num2;
+            return num1 / num2;  //return 'Infinity'
         }
 
         double result = num1 / num2;
