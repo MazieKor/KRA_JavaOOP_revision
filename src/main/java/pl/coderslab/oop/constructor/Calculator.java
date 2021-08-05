@@ -45,6 +45,9 @@ public class Calculator {
     }
 
     public void printOperations() {
+        if(tab.length == 0){
+            System.out.println("There are no operations saved in the Array");
+        }
         for (String element : tab) {
             System.out.println(element);
         }
