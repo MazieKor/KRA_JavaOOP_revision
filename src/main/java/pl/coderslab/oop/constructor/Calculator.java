@@ -11,6 +11,13 @@ public class Calculator {
         tab = new String[0];
     }
 
+    protected String[] getTab(){
+        return tab;
+    }
+    protected void setTab(String[] tab){
+        this.tab = tab;
+    }
+
     public int add(int num1, int num2){
         int result = num1 + num2;
         this.tab = Arrays.copyOf(this.tab, this.tab.length+1);  // I don't create and use a seperate method for adding a new element to Array, because I want to exercise different solutions for that (eg. Arrays.copyOf() or ArrayUtils.add())
