@@ -107,5 +107,6 @@ public class TestCalculator {
         System.out.println("Test po clearOperations: ");
         advCalc1.printOperations();
         System.out.println("Zapamiętany root: " + rootAdv);
+
     }
 }
