@@ -108,5 +108,12 @@ public class TestCalculator {
         advCalc1.printOperations();
         System.out.println("Zapamiętany root: " + rootAdv);
 
+        System.out.println("\nTesting new functionalities");
+        double circleArea = AdvancedCalculator.computeCircleArea(6.2);
+        System.out.println("Circle Area: " + circleArea);
+
+        AdvancedCalculator.printGlobalOperations();
+        AdvancedCalculator.printGlobalOperations("2,8");       //2,8 catches Exception
+        AdvancedCalculator.printGlobalOperations(2);
     }
 }
