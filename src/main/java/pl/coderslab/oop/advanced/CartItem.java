@@ -29,8 +29,8 @@ public class CartItem {
     public String toString() {
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append(product.getId()).append(": ").append(product.getName() + ", ").
-                append(String.format("%3d", quantity) + " x ").append(String.format("%3.2f", product.getPrice()) + " = ").
-                append(String.format("%3.2f",quantity * product.getPrice())).append("\n");
+                append(String.format("%3d", quantity) + " x ").append(String.format("%5.2f", product.getPrice()) + " = ").
+                append(String.format("%5.2f",quantity * product.getPrice())).append("\n");
         return stringBuilder.toString();
     }
 }
