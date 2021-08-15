@@ -54,7 +54,7 @@ public class Product {
             System.out.println(StartShopping.RED + "There are no available product you can choose to add to cart. Add products firstlty. " + StartShopping.RESET);
             return;
         }
-        System.out.println(StartShopping.GREEN + "Products you can choose:" + StartShopping.RESET);
+        System.out.println(StartShopping.GREEN + "Products you can buy:" + StartShopping.RESET);
         for (Product pr : products) {
             System.out.println("   " + pr.id + ". " + String.format("%-35s",pr.name)+" "+ String.format("%6.2f",pr.price));    //NEW nowy sposób formatowania, ze Stringa wstawiam zaledwie "%"
         }

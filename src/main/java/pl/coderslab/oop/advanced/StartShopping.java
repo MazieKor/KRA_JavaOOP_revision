@@ -12,7 +12,7 @@ public class StartShopping {
     public static final String RESET = "\033[0m";  // Text Reset
 
     public static final String message = BLUE + "Choose one of the option (type the number):\n" + RESET +
-            "1.Add new Product definition | 2.Add default Products | 3.Display all Products you can buy | \n" +
+            "1.Add new Product definition | 2.Load definitions of default Products | 3.Display all Products you can buy | \n" +
             "4.Open new shopping cart | 5.Add product to your cart | 6.Remove product from your cart | \n" +
             "7.Update quantity of products in your cart (for decrease quantity give minus '-' before number) | \n" +
             "8.Display total number of products in your cart | 9.Display total value of your cart | 10.Print Receipt | 11.Exit";
@@ -20,6 +20,7 @@ public class StartShopping {
     public void commandOperations() {
         Scanner scan = new Scanner(System.in);
         ShoppingCart shoppingCart = null;        //NEW stwarzam obiekt null, by potem w razie czego stwarzać nowy i przypisac do zmiennej
+        boolean loadingDefaultProductsCheck = false;
         operationsLoop:
         while (true) {
             System.out.println(message);
@@ -31,6 +32,10 @@ public class StartShopping {
             switch (chosenOption) {
                 case 1:
                     addProduct();
+                    continue;
+                case 2:
+                    addDefaultProducts(loadingDefaultProductsCheck);
+                    loadingDefaultProductsCheck = true;
                     continue;
                 case 3:
                     Product.displayAvailableProducts();
@@ -59,6 +64,7 @@ public class StartShopping {
         }
     }
 
+//1.
     public void addProduct() {
         Scanner scan = new Scanner(System.in);
         System.out.println("Type name of the product");
@@ -71,17 +77,41 @@ public class StartShopping {
         double productPrice = scan.nextDouble();
         try {
             Product product = new Product(productName, productPrice);
-            System.out.println(GREEN + "New Product was created" + RESET);
+            System.out.println(GREEN + "New product was created\n" + RESET);
         } catch (FalsePriceNewException e) {
             System.out.println(RED + e.getMessage() + " Product was not created" + RESET);
         }
     }
 
-    public void addDefaultProduct() {
-
-
+//2.
+    public void addDefaultProducts(boolean loadingDefaultProductsCheck) {
+        if (checkIfAlreadyLoaded(loadingDefaultProductsCheck)) return;
+        Product product1 = new Product("desk lamp", 12.29);
+        Product product2 = new Product("granite table", 199.99);
+        Product product3 = new Product("set of knives", 75.5);
+        Product product4 = new Product("new catalogue", 7);
+        System.out.println(GREEN+"Four products were added\n");
     }
 
+    private boolean checkIfAlreadyLoaded(boolean loadingDefaultProductsCheck) {
+        if(loadingDefaultProductsCheck) {
+            System.out.println(RED + "Default products have been already loaded. Do you want to load the same default products once again (Y/N)?" + RESET);
+            Scanner scanner = new Scanner(System.in);
+            while (true) {
+                String answer = scanner.nextLine().trim();
+                if (answer.equalsIgnoreCase("N"))
+                    return true;
+                if (!answer.equalsIgnoreCase("Y")) {
+                    System.out.println(RED + "You didn't choose 'Y' nor 'N'. Please type once again. Do you want to load the same default products once again (Y/N)?"+RESET);
+                    continue;
+                }
+                break;
+            }
+        }
+        return false;
+    }
+
+//5.
     public void chooseProductToAdd(ShoppingCart shCart){
         Scanner scanner = new Scanner(System.in);
         Product.displayAvailableProducts();
