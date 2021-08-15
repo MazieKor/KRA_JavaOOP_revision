@@ -48,8 +48,17 @@ public class StartShopping {
                         shoppingCart = new ShoppingCart();
                     chooseProductToAdd(shoppingCart);
                     continue;
-                case 9:
+                case 7:
 
+
+                case 8:
+                    if (shoppingCart == null)
+                        shoppingCart = new ShoppingCart();
+                    System.out.println(GREEN + "Total quantity of all your products in your cart is: " + shoppingCart.getTotalQuantity() + RESET);
+                case 9:
+                    if (shoppingCart == null)
+                        shoppingCart = new ShoppingCart();
+                    System.out.println(GREEN + "Total sum you must pay at the moment for all your products is: " + shoppingCart.getTotalSum() + RESET);
                 case 10:
                     if (shoppingCart == null)
                         shoppingCart = new ShoppingCart();
@@ -146,5 +155,6 @@ public class StartShopping {
             break;
         }
     }
+
 
 }
