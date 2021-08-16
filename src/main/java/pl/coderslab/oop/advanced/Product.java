@@ -43,7 +43,7 @@ public class Product {
     }
 
 //additional methods
-    public static Product getProduct(int id) {
+    public static Product getProduct(int id) {                 //NEW jak mam gettery pól to non-static, jak mam getter odnoszący się do pola static to getter static
         if(id < 1 || id > products.length)
             throw new IndexOutOfBoundsException("There is no such element on the list of Products.");      //NEW: jak mi nic nie pasuje a musze zwrócić product - zwracam błąd lub moge też null
         return products[id-1];
@@ -51,7 +51,7 @@ public class Product {
 
     public static void displayAvailableProducts(){
         if(products.length==0) {
-            System.out.println(StartShopping.RED + "There are no available product you can choose to add to cart. Add products firstlty. " + StartShopping.RESET);
+            System.out.println(StartShopping.RED + "There are no available product you can choose to add to cart. Add products firstly. " + StartShopping.RESET);
             return;
         }
         System.out.println(StartShopping.GREEN + "Products you can buy:" + StartShopping.RESET);

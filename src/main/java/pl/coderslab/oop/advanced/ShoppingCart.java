@@ -1,21 +1,24 @@
 package pl.coderslab.oop.advanced;
 
 import org.apache.commons.lang3.ArrayUtils;
-import static pl.coderslab.oop.advanced.StartShopping.RED;
-import static pl.coderslab.oop.advanced.StartShopping.RESET;
+
+import java.text.DecimalFormat;
+import java.util.NoSuchElementException;
+
+import static pl.coderslab.oop.advanced.StartShopping.*;
 
 public class ShoppingCart {
     private CartItem[] cartItems = new CartItem[0];             //I don't use static, I want to allow more separate Shopping carts (eg for more buyers) NEW w ShoppingCart lepiej operować na pojedyncz. CartItemach niż na parze osobnych product, qunatity (teoretycznie mógłbym jeszcze zrobić tablicę 2-wymiarową, zamiast klasy CartItem). Altrnatywa - tablica x-wym - nowa klasa. W zasadzie CartItem jt używane tylko do wrzucenia do tablicy CartItem (nie tworzę osobnych CartItemów)
                                                                 //NEW Nie tworzę pojedynczych CartItem (żeby potem wrzucić do tablicy), ale tworzę tablicę i w jej metodach zapełniam Cartitemami
     @Override
     public String toString() {
-        if(cartItems.length == 0)
-            return RED + "There are no items in your cart do display"+RESET;
         StringBuilder stringBuilder = new StringBuilder();
         for (CartItem cItem : cartItems) {
             stringBuilder.append(cItem.toString());
         }
-        stringBuilder.append("---\n").append("Total: ").append(getTotalSum());
+        DecimalFormat form = new DecimalFormat("#,###.00 PLN");
+        String totalSumFormatted = form.format(getTotalSum());
+        stringBuilder.append("---\n").append("Total: ").append(totalSumFormatted);
         return stringBuilder.toString();
     }
 
@@ -40,18 +43,18 @@ public class ShoppingCart {
                 return;
             }
         }
-        System.out.println("Product you choose to remove doesn't exist in the cart");
+        System.out.println("Product you choose to remove doesn't exist in the cart");          //just in case additional message
     }
 
     public boolean updateProduct(Product product, int quantity){
         for (int i = 0; i < cartItems.length; i++) {
             if (cartItems[i].getProduct().getId() == product.getId()) {        //NEW dostanie się do pola pola
                 int quantityBeforeChange = cartItems[i].getQuantity();
-                cartItems[i].setQuantity(Math.max(quantityBeforeChange + quantity, 0));           //I use max because in this method I allow also to decrease quantity of product
+                cartItems[i].setQuantity(Math.max(quantityBeforeChange + quantity, 0));           //I use max because in this method I allow also to decrease quantity of product. I could also simplify that by treating 'quantity' parameter just as new quantity, not quantity to add/decrease from old quantity - but here I want to exercise some coding
                 if(quantity >= 0)
-                    System.out.println(quantity + " piece(s) of product " + product.getName() + " was added.");
+                    System.out.println(GREEN + quantity + " piece(s) of product " + product.getName() + " was added." + RESET);
                 else
-                    System.out.println(Math.min(quantityBeforeChange, -quantity) + " piece(s) of product " + product.getName() + " was deleted.");
+                    System.out.println(GREEN + Math.min(quantityBeforeChange, -quantity) + " piece(s) of product " + product.getName() + " was deleted." + RESET);
                 return true;
             }
         }
@@ -73,9 +76,21 @@ public class ShoppingCart {
         return totalSum;
     }
     public void printReceipt(){
+        if(cartItems.length == 0) {
+            System.out.println(RED + "There are no items in your cart do display" + RESET);
+            return;
+        }
         System.out.println(this);          //NEW: System.out.println automatically uses toString method of the object, the same would be if I write sout(toString()) (but not only sout() )
     }
 
-
+//additional method
+    public Product getProductFromCartItems(int id){              //I create additional method to use after it - 'updateProduct' method in form as it was defined in text of the task ( updateProduct(Product product, int quantity) )
+        for (int i = 0; i < this.cartItems.length; i++) {
+            if(this.cartItems[i].getProduct().getId() == id){
+                return Product.getProduct(id);
+            }
+        }
+        throw new NoSuchElementException("There is no such element on your cart.");
+    }
 
 }

@@ -28,9 +28,9 @@ public class CartItem {
     @Override
     public String toString() {
         StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.append(product.getId()).append(": ").append(product.getName() + ", ").
-                append(String.format("%3d", quantity) + " x ").append(String.format("%5.2f", product.getPrice()) + " = ").
-                append(String.format("%5.2f",quantity * product.getPrice())).append("\n");
+        stringBuilder.append("#"+product.getId()).append(": ").append(String.format("%-35s ",product.getName())).
+                append(String.format("%3d x ", quantity)).append(String.format("%7.2f = ", product.getPrice())).
+                append(String.format("%7.2f",quantity * product.getPrice())).append("\n");
         return stringBuilder.toString();
     }
 }
