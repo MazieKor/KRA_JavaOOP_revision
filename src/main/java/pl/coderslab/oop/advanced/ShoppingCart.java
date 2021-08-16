@@ -8,7 +8,7 @@ import java.util.NoSuchElementException;
 import static pl.coderslab.oop.advanced.StartShopping.*;
 
 public class ShoppingCart {
-    private CartItem[] cartItems = new CartItem[0];             //I don't use static, I want to allow more separate Shopping carts (eg for more buyers) NEW w ShoppingCart lepiej operować na pojedyncz. CartItemach niż na parze osobnych product, qunatity (teoretycznie mógłbym jeszcze zrobić tablicę 2-wymiarową, zamiast klasy CartItem). Altrnatywa - tablica x-wym - nowa klasa. W zasadzie CartItem jt używane tylko do wrzucenia do tablicy CartItem (nie tworzę osobnych CartItemów)
+    CartItem[] cartItems = new CartItem[0];             //I don't use static, I want to allow more separate Shopping carts (eg for more buyers) NEW w ShoppingCart lepiej operować na pojedyncz. CartItemach niż na parze osobnych product, qunatity (teoretycznie mógłbym jeszcze zrobić tablicę 2-wymiarową, zamiast klasy CartItem). Altrnatywa - tablica x-wym - nowa klasa. W zasadzie CartItem jt używane tylko do wrzucenia do tablicy CartItem (nie tworzę osobnych CartItemów)
                                                                 //NEW Nie tworzę pojedynczych CartItem (żeby potem wrzucić do tablicy), ale tworzę tablicę i w jej metodach zapełniam Cartitemami
     @Override
     public String toString() {
@@ -16,11 +16,12 @@ public class ShoppingCart {
         for (CartItem cItem : cartItems) {
             stringBuilder.append(cItem.toString());
         }
-        DecimalFormat form = new DecimalFormat("#,###.00 PLN");
+        DecimalFormat form = new DecimalFormat("#,##0.00 PLN");
         String totalSumFormatted = form.format(getTotalSum());
-        stringBuilder.append("---\n").append("Total: ").append(totalSumFormatted);
+        stringBuilder.append("  ---\n").append("  Total: ").append(totalSumFormatted);
         return stringBuilder.toString();
     }
+
 
     public void addProduct(Product product, int quantity){
         if(quantity<0) {
@@ -35,16 +36,38 @@ public class ShoppingCart {
         System.out.println(StartShopping.GREEN + quantity + " piece(s) of product " + product.getName() + " was added."+StartShopping.RESET);
     }
 
+
     public void removeProduct(Product product) {
+        if(cartItems.length == 0){
+            System.out.println(RED+"There are no item in your cart. You can't remove anything. Try firstly add some products"+RESET);
+            return;
+        }
         for (int i = 0; i < cartItems.length; i++) {
             if (cartItems[i].getProduct().getId() == product.getId()) {
                 cartItems[i].setQuantity(0);                              //I set quantity of product to '0' (not removing product) - according to literal content of the task
-                System.out.println(String.format("There are no more pieces of %s in the cart", product.getName()));
+                System.out.println(String.format(GREEN + "There are no more pieces of %s in the cart", product.getName()) + RESET);
                 return;
             }
         }
         System.out.println("Product you choose to remove doesn't exist in the cart");          //just in case additional message
     }
+
+//2nd option of remove method
+    public void removeProduct2(Product product) {                              //I create 2 option of remove method, which remove an item from cart, not only set quantity to 0 (as it was in the content of the task)
+        if(cartItems.length == 0){
+            System.out.println(RED+"There are no items in your cart. You can't remove anything. Try firstly add some products"+RESET);
+            return;
+        }
+        for (int i = 0; i < cartItems.length; i++) {
+            if (cartItems[i].getProduct().getId() == product.getId()) {
+                cartItems = ArrayUtils.remove(cartItems, i);
+                System.out.println(String.format(GREEN + "Product %s was deleted from your cart", product.getName()) + RESET);
+                return;
+            }
+        }
+        System.out.println("Product you choose to remove doesn't exist in the cart");
+    }
+
 
     public boolean updateProduct(Product product, int quantity){
         for (int i = 0; i < cartItems.length; i++) {
@@ -61,6 +84,8 @@ public class ShoppingCart {
         System.out.print("Product you choose doesn't exist in the cart.");
         return false;
     }
+
+
     public int getTotalQuantity(){
         int totalQuantity = 0;
         for(CartItem cartItem : cartItems){
@@ -68,6 +93,8 @@ public class ShoppingCart {
         }
     return totalQuantity;
     }
+
+
     public double getTotalSum(){
         double totalSum = 0;
         for (CartItem cartItem : cartItems) {
@@ -75,13 +102,17 @@ public class ShoppingCart {
         }
         return totalSum;
     }
-    public void printReceipt(){
+
+
+    public boolean printReceipt(){
         if(cartItems.length == 0) {
-            System.out.println(RED + "There are no items in your cart do display" + RESET);
-            return;
+            System.out.println(RED + "There are no items in your cart. Please firstly add some products to display the receipt or do any operation" + RESET);
+            return false;
         }
         System.out.println(this);          //NEW: System.out.println automatically uses toString method of the object, the same would be if I write sout(toString()) (but not only sout() )
+        return true;
     }
+
 
 //additional method
     public Product getProductFromCartItems(int id){              //I create additional method to use after it - 'updateProduct' method in form as it was defined in text of the task ( updateProduct(Product product, int quantity) )
@@ -92,5 +123,4 @@ public class ShoppingCart {
         }
         throw new NoSuchElementException("There is no such element on your cart.");
     }
-
 }

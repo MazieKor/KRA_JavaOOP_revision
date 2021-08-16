@@ -6,6 +6,5 @@ public class TestShopping {
         StartShopping startShopping = new StartShopping();
         startShopping.commandOperations();
 
-
     }
 }
