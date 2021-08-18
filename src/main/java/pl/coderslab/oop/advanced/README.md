@@ -18,6 +18,28 @@ Do klasy ```AdvancedCalculator``` dopisz:
 2. przeciążoną metodę `printGlobalOperations(String length)`, która wyświetli określoną liczbę ostatnich operacji.
 Wykonaj rzutowanie wartości typu `String`. Napisz obsługę odpowiedniego wyjątku.
 
+
+# Draft version of readme
+
+This simple application was created based on the task from CodersLab IT School (content of the task at the bottom of the file).
+
+In accordance with content of the task three classes was built (Product, CartItem, ShppingCart), in class Shopping Cart there were created method for adding product to a Cart, as well as removing and updating cart. There last methods display: number of all products in a cart, total value of products in cart and whole cart with details.
+
+After creating basic methods I expanded application – I added next class StartShopping, which “manages” all functionalities. Thanks to it application gets data from console (class Scannner) and perform chosen activities.
+I divided activities possible to choose in 2 groups
+1. Managing products (Initial adding of product(s) is required for choosing a product to buy in a next step):
+- user can choose on the console to load some default products or/ and add his/her own products (with own name and price). There is of course possibility of displaying all products possible to buy
+
+2. Managing Shopping Cart: In this section user can add a product (from a pool of products created earlier) to her cart, remove item from cart, update quantity in a cart. There is also possibility to move back to main menu from already chosen option. User can display his/her cart as well as display only value of a whole cart and display number of all products in the cart.
+   At the end there is possibility of opening new shopping cart for new purchases and exit the application
+   Because of time restrictions I didn’t add any form of saving someone’s cart in a file (this functionality I already added in few other tasks which I made)
+   In the application I added new Exception class, I override equals/hash and toString methods, used static or instance fields and methods (depending on the requirements) and made some formatting (by using Formatter as well DecimalFormat class). At the end I also added needed validations (this simple one as well as little less trivial – as eg. questioning if somebody is sure to load already loaded default products), coloring of messages and some comments in the code.
+   
+To run the application user must run the TestShopping class and then just choosing wanted functionalities in the console
+
+
+##Original content of the tasks:
+
 ## Zadanie 3
 
 Napisz podstawę programu obiektowego, który będzie wspomagać skanowanie produktów w sklepie.
@@ -26,7 +48,6 @@ Stwórz klasę `Product`. Klasa ma posiadać poniższe atrybuty:
   * `id` – liczba całkowita. Powinna być unikalna w całym systemie (w dalszej części zadania zostanie wyjaśnione jak to osiągnąć),
   * `name` –  typu String, jest to nazwa danego produktu,
   * `price` – typu double, jest to cena za jeden produkt. Powinna być większa od `0.01`. Sprawdź ten warunek w setterze utworzonym własnoręcznie. Jeśli warunek nie będzie spełniony – zwróć wyjątek.
-
 
 #### Generowanie kolejnego id dla produktu:  
 
