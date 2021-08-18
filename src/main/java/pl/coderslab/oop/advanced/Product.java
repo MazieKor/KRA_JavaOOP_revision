@@ -2,6 +2,8 @@ package pl.coderslab.oop.advanced;
 
 import org.apache.commons.lang3.ArrayUtils;
 
+import java.util.Objects;
+
 public class Product {
     private static int idStatic = 1;          //NEW: static inicjalizowane tylko raz (?)
     private final int id;                     //NEW: podpowiedź żeby zrobić final
@@ -61,4 +63,16 @@ public class Product {
         return true;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Product product = (Product) o;
+        return id == product.id && Double.compare(product.price, price) == 0 && Objects.equals(name, product.name);    //NEW: return w booleanie sprawdzający wiele warunków na raz
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, price);
+    }
 }

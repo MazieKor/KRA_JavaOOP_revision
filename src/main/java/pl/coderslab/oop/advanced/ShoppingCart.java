@@ -52,14 +52,14 @@ public class ShoppingCart {
         System.out.println("Product you choose to remove doesn't exist in the cart");          //just in case additional message
     }
 
-//2nd option of remove method
-    public void removeProduct2(Product product) {                              //I create 2 option of remove method, which remove an item from cart, not only set quantity to 0 (as it was in the content of the task)
+//2nd option of remove method   - I create 2nd option of remove method, which remove an item from cart, not only set quantity to 0 (as it was in the content of the task)
+    public void removeProduct2(Product product) {
         if(cartItems.length == 0){
             System.out.println(RED+"There are no items in your cart. You can't remove anything. Try firstly add some products"+RESET);
             return;
         }
         for (int i = 0; i < cartItems.length; i++) {
-            if (cartItems[i].getProduct().getId() == product.getId()) {
+            if (cartItems[i].getProduct().getId() == product.getId()) {    //NEW dostanie się do pola pola
                 cartItems = ArrayUtils.remove(cartItems, i);
                 System.out.println(String.format(GREEN + "Product %s was deleted from your cart", product.getName()) + RESET);
                 return;
@@ -68,12 +68,12 @@ public class ShoppingCart {
         System.out.println("Product you choose to remove doesn't exist in the cart");
     }
 
-
+//updateProduct method - I could also simplify that by treating 'quantity' parameter just as new quantity to set (not quantity to add/decrease from old quantity) - but here I want to exercise some coding and that's why I decided to adding/subtracting instead of setting
     public boolean updateProduct(Product product, int quantity){
         for (int i = 0; i < cartItems.length; i++) {
-            if (cartItems[i].getProduct().getId() == product.getId()) {        //NEW dostanie się do pola pola
+            if (cartItems[i].getProduct().equals(product)) {           //instead of "if (cartItems[i].getProduct().getId() == product.getId())" as in removeProduct method I use here newly overridden 'equals' method from class Product
                 int quantityBeforeChange = cartItems[i].getQuantity();
-                cartItems[i].setQuantity(Math.max(quantityBeforeChange + quantity, 0));           //I use max because in this method I allow also to decrease quantity of product. I could also simplify that by treating 'quantity' parameter just as new quantity, not quantity to add/decrease from old quantity - but here I want to exercise some coding
+                cartItems[i].setQuantity(Math.max(quantityBeforeChange + quantity, 0));       //I use max because in this method I allow also to decrease quantity of product.
                 if(quantity >= 0)
                     System.out.println(GREEN + quantity + " piece(s) of product " + product.getName() + " was added." + RESET);
                 else
@@ -115,10 +115,10 @@ public class ShoppingCart {
 
 
 //additional method
-    public Product getProductFromCartItems(int id){              //I create additional method to use after it - 'updateProduct' method in form as it was defined in text of the task ( updateProduct(Product product, int quantity) )
+    public Product getProductFromCartItems(int id){              //I create additional method to use it within the framework of 'updateProduct' functionality in form as it was defined in text of the task ( updateProduct(Product product, int quantity) )
         for (int i = 0; i < this.cartItems.length; i++) {
             if(this.cartItems[i].getProduct().getId() == id){
-                return Product.getProduct(id);
+                return Product.getProduct(id);               //Instead of that I could use also simple "return cartItems[i].getProduct();". I wanted to exercise static methods and I use static 'getProduct' method from Product class (which was created for another functionality - adding chosen products to a Shopping Cart)
             }
         }
         throw new NoSuchElementException("There is no such element on your cart.");
