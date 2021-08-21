@@ -7,7 +7,7 @@ import java.util.Arrays;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class AdvancedCalculator extends Calculator {                            //I want to keep AdvancedCalculator in different package than Calcuator to exercise some stuff (inter alia access modifiers and relations child-parent when in different packages)
+public class AdvancedCalculator extends Calculator {            //I want to keep AdvancedCalculator in different package than Calcuator to exercise some stuff (inter alia access modifiers and relations child-parent when in different packages)
     static final double PI = 3.14159265;
     protected static String[] tabStatic = new String[0];     //NEW: Ciekawe zadanie pokazujące pokazać też staic fields i róznica z instance fields
 
@@ -36,7 +36,7 @@ public class AdvancedCalculator extends Calculator {                            
         double result = Math.pow(num1, 1 / num2);
         String[] tab = getTab();
         tab = ArrayUtils.add(tab, num2 + " root of " + num1 + " equals " + result);
-        setTab(tab);                    //NEW: Without setting, in the line above I create new object which is never assigned to field 'tab' in class Calculator Bez setowania tablicy w linii wyżej robie nowy obiket, który nigdy nie jt przypisany polu w klasie Calculator
+        setTab(tab);                    //Without setting, in the line above I create new object which is never assigned to field 'tab' in class Calculator
 
 //adding new static tab
         tabStatic = ArrayUtils.add(tabStatic, "Result root method: " + result);

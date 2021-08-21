@@ -15,7 +15,16 @@ public class Shape {
         return "Center of the Shape is " + x + ", " + y + " and color is: " + color;
     }
 
-    public double getDistance(Shape shape){
+//Alternative method getDescription
+    public String getDescription2() {
+        String givenX = String.valueOf(this.x);
+        String givenY = String.valueOf(this.y);
+        String givenColor = String.valueOf(this.color);
+        return String.join(" ", givenX, givenY, givenColor);
+    }
+
+
+    public double getDistance(Shape shape){                  //for simplicity I don't validate for null
         AdvancedCalculator advCalc = new AdvancedCalculator();
         double length = Math.abs(this.x - shape.x);
         double height = Math.abs(this.y - shape.y);

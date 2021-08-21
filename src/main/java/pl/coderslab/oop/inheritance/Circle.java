@@ -3,7 +3,7 @@ package pl.coderslab.oop.inheritance;
 public class Circle extends Shape {
     private double radius;
 
-    public Circle(double x, double y, String color, double radius){    //NEW: jak tworzę taki obiekt to logiczne że używa nadpisanej funckcji
+    public Circle(double x, double y, String color, double radius){
         super(x, y, color);
         this.radius = radius;
     }

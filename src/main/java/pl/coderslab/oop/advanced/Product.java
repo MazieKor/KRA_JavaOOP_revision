@@ -10,7 +10,7 @@ public class Product {
     private String name;
     private double price;
 
-    private static Product[] products = new Product[0];        //additional field to use additional methods (from beyond the scope of the task) //NEW sposób na dostanie się do obiektu/produktu który wcześniej stworzyłem - stworzenie tablicy statycznej w tej klasie gdzie są zapisywane stworzone rzeczy
+    private static Product[] products = new Product[0];        //additional field to use additional methods (from beyond the scope of the task) //NEW sposób na dostanie się do obiektu/produktu który wcześniej stworzyłem - stworzenie tablicy statycznej w tej klasie gdzie są zapisywane stworzone rzeczy. Generalnie tablica w klasie może służyć do zapisywania historii operacji
 
     public Product(String name, double price){
         setPrice(price);                    //I use it as first in constructor so in case of Exception idStatic is not increased +NEW
