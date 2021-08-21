@@ -13,6 +13,7 @@ public class TestCalculator {
         int multiply1 = calc1.multiply(34,2);
         System.out.println("Test po 2 operacjach: ");
         calc1.printOperations();
+        AdvancedCalculator.printGlobalOperations();             //I can use static field (static global array) from AdvCalulator without creating AdvCalulator object first
 
         calc1.subtract(34,973);
         System.out.println("Test po 3 operacjach: ");
@@ -24,7 +25,7 @@ public class TestCalculator {
         System.out.println("Test po 6 operacjach: ");
         calc1.printOperations();
 
-        double divideResult = calc1.divided(4,0);
+        double divideResult = calc1.divided(4,0);                         //should be 'Infinity', but not saved in an array
         System.out.println("Test po dzieleniu przez 0: ");
         calc1.printOperations();
 

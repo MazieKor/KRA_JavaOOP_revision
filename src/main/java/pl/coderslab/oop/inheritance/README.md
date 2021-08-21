@@ -1,6 +1,18 @@
 ![Coders-Lab-1920px-no-background](https://user-images.githubusercontent.com/152855/73064373-5ed69780-3ea1-11ea-8a71-3d370a5e7dd8.png)
 
 
+#Draft version of readme
+Task includes Class AdvancedCalculator from this package, as well as classes Claculator and TestCalculator from package 'constructor'. Elements of task are also used by classes Shape and Circle (from this package)
+Task shpuld encompass topics like inheritance, polymorphism and static fields/ methods, as well as invoking them. 
+Task was based on class Calculator which I created with 6 basic methods (add, subtract, multiply, divide, printOperations, clearOperations). The idea behind this task and Class is that the mathematical operations are performed, some validation made (division through 0) and result are remembered. For that an array (instance field of the class) is used. Remebered operations can also be erased (eg. to start the array from beginning and new operations on).
+To this basic class an AdvancedCalculator class (which extended Calculator class), in different package was added. In this method further method are provided (power, root), and operation still need to be remembered in the same array (since arrays is private field getter and setter are used).
+Furthermore in AdvancedCalculator should be created method which remembers all operations (on all calculators) – so static array field must be created to remember all operations (because these field and method are static I can use them from class Calculator without creating any AdvancedCalculator object first – thorugh  ‘AdvancedCalculator.getTabStatic();’ I can get ‘global’ array from other class). Static methods inter alia to print all/ defined number of last/ operations from static array were added + some basic validation (parsing String to integer according with task content. I did it with Scanner class for exercise diiferent way of parsing).
+In the end I created TestCalculator class where I tested methods of classes Calculator and AdvancedCalculator, as well as arrays (‘global’ static one and instance one), which should save operations, with different numbers (including 0).
+
+Besides, in accordance with other tasks, I created 2 classes (Shape and Circle which extended Shape), which have methods (eg. getArea() ), which in turn take advantage of methods from AdvancedCalculator class. Those methods (which uses methods from AdvancedCalculator class) where tested in class TestClass, co AdvancedCalculator class was checked “in real life”
+
+
+
 ## Zadanie 1 - rozwiązywane z wykładowcą
 
 Stwórz klasę ```AdvancedCalculator```, która dziedziczy po klasie ```Calculator```.

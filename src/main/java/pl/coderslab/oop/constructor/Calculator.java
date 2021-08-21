@@ -21,7 +21,7 @@ public class Calculator {
 
     public int add(int num1, int num2){
         int result = num1 + num2;
-        this.tab = Arrays.copyOf(this.tab, this.tab.length+1);  // I don't create and use a seperate method for adding a new element to Array, because I want to exercise different solutions for that (eg. Arrays.copyOf() or ArrayUtils.add())
+        this.tab = Arrays.copyOf(this.tab, this.tab.length+1);  // I don't create and use a seperate method for adding a new element to Array, because I want to exercise different solutions in different methods for that (eg. Arrays.copyOf() or ArrayUtils.add())
         tab[tab.length-1] = "added " + num1 + " to " + num2 + " got " + result;
 
         toStaticTab("add", result);

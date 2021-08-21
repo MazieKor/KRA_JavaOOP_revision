@@ -1,7 +1,7 @@
 package pl.coderslab.oop.inheritance;
 
 import org.apache.commons.lang3.ArrayUtils;
-import pl.coderslab.oop.constructor.Calculator;     //New
+import pl.coderslab.oop.constructor.Calculator;
 
 import java.util.Arrays;
 import java.util.InputMismatchException;
@@ -9,11 +9,15 @@ import java.util.Scanner;
 
 public class AdvancedCalculator extends Calculator {            //I want to keep AdvancedCalculator in different package than Calcuator to exercise some stuff (inter alia access modifiers and relations child-parent when in different packages)
     static final double PI = 3.14159265;
-    protected static String[] tabStatic = new String[0];     //NEW: Ciekawe zadanie pokazujące pokazać też staic fields i róznica z instance fields
+    protected static String[] tabStatic = new String[0];
 
     public static String[] getTabStatic() {
         return tabStatic;
     }
+
+//    static {                                                    //static block to test in which moment class is initialized (it can be initialized through using a method from Calculator class, which method, in turn, uses static method getTabStatic from AdvCalc. class)
+//        System.out.println("start Advanced CLASS");
+//    }
 
     public static void setTabStatic(String[] tab) {
         tabStatic = tab;
@@ -69,10 +73,10 @@ public class AdvancedCalculator extends Calculator {            //I want to keep
         }
     }
 
-    public static void printGlobalOperations(String length) {           //new method with String parameter - according to task
+    public static void printGlobalOperations(String length) {           //new method with String parameter - according to task content
         int lengthInt;
         try {
-            lengthInt = new Scanner(length.trim()).nextInt();       //testing different way of parsing
+            lengthInt = new Scanner(length.trim()).nextInt();       //using different way of parsing
         } catch (InputMismatchException e){
             System.out.println("False argument. Give an integer number in form of String");
             return;
