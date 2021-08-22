@@ -4,6 +4,7 @@ import org.apache.commons.lang3.ArrayUtils;
 
 import java.text.DecimalFormat;
 import java.util.NoSuchElementException;
+import java.util.stream.Stream;
 
 import static pl.coderslab.oop.advanced.StartShopping.*;
 
@@ -92,6 +93,10 @@ public class ShoppingCart {
         for(CartItem cartItem : cartItems){
             totalQuantity += cartItem.getQuantity();
         }
+
+//test version - using of Stream
+//        int totalQuantityStream = Stream.of(cartItems).mapToInt(CartItem::getQuantity).sum();
+
     return totalQuantity;
     }
 

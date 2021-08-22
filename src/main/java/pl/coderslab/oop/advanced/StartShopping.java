@@ -13,10 +13,10 @@ public class StartShopping {
     public static final String RESET = "\033[0m";  // Text Reset
 
     public static final String message = BLUE + "Choose one of the option (type the number):\n" + RESET +
-            BLUE + "Products: " +RESET +"1.Add default Products to the pool | 2.Create and add new Product to the pool | 3.Show all Products from the pool you can buy |\n" +
-            BLUE + "Your shopping cart: " + RESET + "4.Open new shopping cart | 5.Add product to your cart | 6.Remove product from your cart | \n" +
+            BLUE + "Products: " +RESET +"1.Add default Products to the pool |  2.Create and add new Product to the pool |  3.Show all Products from the pool you can buy |\n" +
+            BLUE + "Your shopping cart: " + RESET + "4.Open new shopping cart |  5.Add product to your cart |  6.Remove product from your cart | \n" +
             "7.Update quantity of products in your cart (for decrease quantity give minus '-' before number) | \n" +
-            "8.Display your cart/ receipt | 9.Display total value of your cart | 10.Display total number of products in your cart | 11.Exit";
+            "8.Display your cart/ receipt |  9.Display total value of your cart |  10.Display total number of products in your cart |  11.Exit";
 
     public void commandOperations() {
         Scanner scan = new Scanner(System.in);
@@ -103,7 +103,7 @@ public class StartShopping {
 
     private boolean checkIfAlreadyLoaded(boolean loadingDefaultProductsCheck) {
         if(loadingDefaultProductsCheck) {
-            System.out.println(RED + "Default products have been already loaded. Do you want to load the same default products once again (Y/N)?" + RESET);
+            System.out.println(RED + "Default products have been already loaded. Do you want to load the same products once again and create duplicates on the product list (Y/N)?" + RESET);
             Scanner scanner = new Scanner(System.in);
             while (true) {
                 String answer = scanner.nextLine().trim();
