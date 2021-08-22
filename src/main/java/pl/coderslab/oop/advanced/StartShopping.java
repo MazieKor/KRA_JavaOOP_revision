@@ -20,7 +20,7 @@ public class StartShopping {
 
     public void commandOperations() {
         Scanner scan = new Scanner(System.in);
-        ShoppingCart shoppingCart = null;        //NEW stwarzam obiekt null, by potem w razie czego stwarzać nowy i przypisac do zmiennej
+        ShoppingCart shoppingCart = null;
         boolean loadingDefaultProductsCheck = false;
         operationsLoop:
         while (true) {
@@ -46,7 +46,7 @@ public class StartShopping {
                         if(!creatingNewShoppingCartValidation())
                             continue;
                     }
-                    shoppingCart = new ShoppingCart();       //NEW: Stwarzam jedną ShoppingCart i mogę używać tej klasy z jej metodami w pętli, więc ciągle tego samego obiektu
+                    shoppingCart = new ShoppingCart();
                     System.out.println(GREEN + "New shopping cart was created");
                     continue;
                 case 5:
@@ -70,7 +70,7 @@ public class StartShopping {
                     System.out.println(GREEN + "All products in your current shopping cart:" + RESET);
                     shoppingCart.printReceipt();
                     System.out.println();
-                    continue;               //NEW nie potrzebuję tu odniesc się do nazwy loopa
+                    continue;
                 case 9:
                     if (shoppingCart == null)
                         shoppingCart = new ShoppingCart();
@@ -83,7 +83,7 @@ public class StartShopping {
                     continue;
                 case 11:
                     System.out.println(BLUE_BOLD+"You are exiting application. Bye, Bye");
-                    break operationsLoop;   //NEW potrzebuję tu odniesc się do nazwy loopa
+                    break operationsLoop;
                 default:
                     System.out.println(RED+"You've chosen number which is not on the list. Try once again." + RESET);
             }
@@ -92,29 +92,9 @@ public class StartShopping {
 
 
 //1.
-    public void addProduct() {
-        Scanner scan = new Scanner(System.in);
-        System.out.println("Type name of the product");
-        String productName = scan.nextLine().trim();
-        System.out.println("Type price of the product (more than 0,01)");
-        while (!scan.hasNextDouble()) {
-            System.out.println(RED + "False argument. Please type a number" + RESET);
-            scan.next();
-        }
-        double productPrice = scan.nextDouble();
-        try {
-            new Product(productName, productPrice);
-            System.out.println(GREEN + "New product was created" + RESET);
-        } catch (FalsePriceNewException e) {
-            System.out.println(RED + e.getMessage() + " Product was not created" + RESET);
-        }
-    }
-
-
-//2.
     public void addDefaultProducts(boolean loadingDefaultProductsCheck) {
         if (checkIfAlreadyLoaded(loadingDefaultProductsCheck)) return;
-        new Product("Desk lamp", 12.29);     //NEW: nie musze przypisywać do zmiennej jeśli chcę tylko stworzyć
+        new Product("Desk lamp", 12.29);
         new Product("Granite table", 199.99);
         new Product("Set of knives", 75.5);
         new Product("New catalogue", 7);
@@ -138,6 +118,27 @@ public class StartShopping {
         }
         return false;
     }
+
+
+//2.
+    public void addProduct() {
+        Scanner scan = new Scanner(System.in);
+        System.out.println("Type name of the product");
+        String productName = scan.nextLine().trim();
+        System.out.println("Type price of the product (more than 0,01)");
+        while (!scan.hasNextDouble()) {
+            System.out.println(RED + "False argument. Please type a number" + RESET);
+            scan.next();
+        }
+        double productPrice = scan.nextDouble();
+        try {
+            new Product(productName, productPrice);
+            System.out.println(GREEN + "New product was created" + RESET);
+        } catch (FalsePriceNewException e) {
+            System.out.println(RED + e.getMessage() + " Product was not created" + RESET);
+        }
+    }
+
 
 //4.
     public boolean creatingNewShoppingCartValidation(){
@@ -169,10 +170,6 @@ public class StartShopping {
                 return;
             if(resultOfValidation == 1)
                 continue;
-//            if(messageValidation(chosenProductNumber, 1, shCart) == 0)    //NEW test logiczny funkcji w ifie, powoduje że ta funkcja się wywołuje (i dopiero potem zwraca to co ma zwrócic returnem i przyrównuje do badanej liczby) więc jeśli funcja się wywołuje, zwraca 1 i zrobię 2 ify to wykona się 2 razy, bo dopiero za 2. razem złapie ==1
-//                return;
-//            if(messageValidation(chosenProductNumber, 1, shCart) == 1)
-//                continue;
             Product productToAdd;
             try {
                 productToAdd = Product.getProduct(Integer.parseInt(chosenProductNumber));
@@ -234,7 +231,7 @@ public class StartShopping {
                 continue;
             Product product;
             try{
-                product = shCart.getProductFromCartItems(Integer.parseInt(chosenProductNumber));     //(validation of parsing of String is made in 'messageValidation' method)
+                product = shCart.getProductFromCartItems(Integer.parseInt(chosenProductNumber));       //(validation of parsing of String is made in 'messageValidation' method)
             } catch (NoSuchElementException e){
                 System.out.println(RED + e.getMessage() + " Try again" + RESET);
                 continue;
