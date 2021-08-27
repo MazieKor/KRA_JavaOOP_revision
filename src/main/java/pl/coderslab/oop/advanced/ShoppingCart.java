@@ -9,7 +9,7 @@ import java.util.stream.Stream;
 import static pl.coderslab.oop.advanced.StartShopping.*;
 
 public class ShoppingCart {
-    CartItem[] cartItems = new CartItem[0];                                          //I don't use static, I want to allow more separate Shopping carts (eg for more buyers)
+    CartItem[] cartItems = new CartItem[0];                                          //I don't use static field here, I want to allow more separate Shopping carts (eg for more buyers)
 
     @Override
     public String toString() {
@@ -94,7 +94,7 @@ public class ShoppingCart {
             totalQuantity += cartItem.getQuantity();
         }
 
-//test version - using of Stream
+//test version - I wanted to test using of Stream and some other funtions (as lambda)
 //        int totalQuantityStream = Stream.of(cartItems).mapToInt(CartItem::getQuantity).sum();
 
     return totalQuantity;
