@@ -1,24 +1,6 @@
 ![Coders-Lab-1920px-no-background](https://user-images.githubusercontent.com/152855/73064373-5ed69780-3ea1-11ea-8a71-3d370a5e7dd8.png)
 
 
-## Zadanie 1 - rozwiązywane z wykładowcą
-
-Do klasy ```AdvancedCalculator``` dopisz:
-
- 1. stałą ```PI```, która będzie miała przypisaną wartość **3.14159265**,
- 2. statyczną metodę ```computeCircleArea(r)``` , która będzie zwracała pole koła. Ta metoda nie będzie dopisywać obliczeń do tablicy (napisz w komentarzu, dlaczego nie może tego robić),
- 3. statyczną tablicę, która będzie przechowywała historię operacji wykonanych na wszystkich kalkulatorach,
- 4. statyczną metodę `printGlobalOperations()`, która będzie wyświetlała wszystkie operacje ze wszystkich obiektów klasy `Calculator`.
-
-## Zadanie 2
-
-Do klasy ```AdvancedCalculator``` dopisz:
-
-1. przeciążoną metodę `printGlobalOperations(int length)`, która wyświetli określoną liczbę ostatnich operacji,
-2. przeciążoną metodę `printGlobalOperations(String length)`, która wyświetli określoną liczbę ostatnich operacji.
-Wykonaj rzutowanie wartości typu `String`. Napisz obsługę odpowiedniego wyjątku.
-
-
 # Draft version of readme
 
 This simple application was created based on the task from CodersLab IT School (content of the task at the bottom of the file).
@@ -38,7 +20,31 @@ I divided activities possible to choose in 2 groups
 To run the application user must run the TestShopping class and then just choosing wanted functionalities in the console
 
 
-##Original content of the tasks:
+
+
+
+
+
+
+
+##Original content of the tasks - in Polish
+## Zadanie 1 - rozwiązywane z wykładowcą
+
+Do klasy ```AdvancedCalculator``` dopisz:
+
+ 1. stałą ```PI```, która będzie miała przypisaną wartość **3.14159265**,
+ 2. statyczną metodę ```computeCircleArea(r)``` , która będzie zwracała pole koła. Ta metoda nie będzie dopisywać obliczeń do tablicy (napisz w komentarzu, dlaczego nie może tego robić),
+ 3. statyczną tablicę, która będzie przechowywała historię operacji wykonanych na wszystkich kalkulatorach,
+ 4. statyczną metodę `printGlobalOperations()`, która będzie wyświetlała wszystkie operacje ze wszystkich obiektów klasy `Calculator`.
+
+## Zadanie 2
+
+Do klasy ```AdvancedCalculator``` dopisz:
+
+1. przeciążoną metodę `printGlobalOperations(int length)`, która wyświetli określoną liczbę ostatnich operacji,
+2. przeciążoną metodę `printGlobalOperations(String length)`, która wyświetli określoną liczbę ostatnich operacji.
+Wykonaj rzutowanie wartości typu `String`. Napisz obsługę odpowiedniego wyjątku.
+
 
 ## Zadanie 3
 
